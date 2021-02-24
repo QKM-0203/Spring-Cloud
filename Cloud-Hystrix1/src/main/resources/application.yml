@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: service-h2
+hystrix:
+  dashboard:
+    proxy-stream-allow-list: "localhost"
+server:
+  port: 9987
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
