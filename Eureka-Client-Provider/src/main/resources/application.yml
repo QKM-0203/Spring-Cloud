@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: provider-service
+server:
+  port: 8787
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/ #可以配置多个Eureka一般在生产环境中会有多个eureka
