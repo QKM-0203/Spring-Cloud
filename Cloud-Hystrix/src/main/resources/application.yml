@@ -10,7 +10,8 @@ management:
   endpoints:
     web:
       exposure:
-        include: "*"
+        include: hystrix.stream
+        #"*"代表开启所有端点
 
 
 
