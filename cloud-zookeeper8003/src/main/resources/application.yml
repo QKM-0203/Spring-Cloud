@@ -1,0 +1,11 @@
+server:
+  port: 8003
+spring:
+  application:
+    name: cloud-zookeeper8003
+  cloud:
+    zookeeper:
+#      集群模式
+      connect-string: localhost:2181,localhost:3001,localhost:4001,localhost:5001
+
+
