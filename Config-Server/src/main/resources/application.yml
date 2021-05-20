@@ -1,12 +1,10 @@
 server:
   port: 8888
 
-
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka
-
+      defaultZone: http://www.qkm.com:8788/eureka,http://www.QKM.com:8761/eureka
 spring:
   application:
     name: cloud-config-center
@@ -14,11 +12,12 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/QKM-0203/Spring-cloud-config.git
+          skip-ssl-validation: true
+          uri: http://github.com/QKM-0203/Spring-cloud-config.git
           # 搜索目录
-          search-paths:
-            - Spring-cloud-config
           # 读取分支
+          username: QKM-0203
+          password: 13468724917qkm,
       label: master
 
 

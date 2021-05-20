@@ -1,18 +1,45 @@
 spring:
+  zipkin:
+    base-url: http://localhost:9411
+  sleuth:
+    sampler:
+      probability: 1
   application:
     name: consumer-service
 server:
   port: 8585
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/ #可以配置多个Eureka一般在生产环境中会有多个eureka
+logging:
+  level:
+    #将fegin的日志以什么样的日志级别打开
+    eurekaclientconsumer.eurekaclientconsumer.OpenFiegn.Feign: debug
+
+#当在客户端结合fegin和hystrix一起使用时，同时实现fegin接口，将fegin接口的实现类当成是fallbackMethod,就要开启
 feign:
   hystrix:
     enabled: true
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
+  #设置 feign 客户端超时时间, 2点几的版本是默认 1s
+#feign:
+#  client:
+#    config:
+#      default:
+#        connectTimeout: 5000
+#        readTimeout: 12000
+## OpenFeign 默认支持 Ribbon，也可以使用以下配置
+#ribbon:
+#  # 建立连接所用时间，适用于网络正常的情况下，两端连接所用的时间
+#  ConnectTimeout: 5000
+#  # 建立连接后从服务器读取到可用资源所用的时间
+#  ReadTimeout: 12000
+##eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka,http://localhost:8788/eureka #可以配置多个Eureka一般在生产环境中会有多个eureka
+#feign:
+#  hystrix:
+#    enabled: true
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: "*"
 

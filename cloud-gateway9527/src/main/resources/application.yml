@@ -1,0 +1,35 @@
+server:
+  port: 9527
+
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true #开启动态的从配置中心路由的功能,就是负载均衡
+      routes:
+        - id: provider-1
+          uri: lb://provider-service  #提供微服务的名称,同时负载均衡（lb）
+          predicates:
+#            带有通配符的,根据9527端口访问，先断言路经是否符合（就是将9527后面你输入的路径和这个yml文件比对，如果有就路由到对应的微服务上面）
+            - Path=/testGateway/**
+#            - After=2021-05-19T16:28:34.955959+08:00[Asia/Shanghai]  #在这个时间之后才能访问，还有Before和Between
+#            - Cookie=username,qkm  # 请求中得带cookie username=qkm
+#            - Header=X-Request,\d+ # 请求头中的X-Request:正数
+
+eureka:
+  client:
+    service-url:
+      #      集群版,用逗号分隔
+      defaultZone: http://www.qkm.com:8788/eureka,http://www.QKM.com:8761/eureka #可以配置多个Eureka一般在生产环境中会有多个eureka
+  #  是否将自己注册进eureka
+  #    register-with-eureka: true
+  instance:
+    instance-id: provide8787
+    prefer-ip-address: true
+#    eureka客户端发送最后一次心跳后的等待后的最长时间,超时就删除客户端
+#   lease-expiration-duration-in-seconds: 2(默认值)
+#    客户端向eureka发送心跳时间间隔
+#   lease-renewal-interval-in-seconds: 1(默认值)

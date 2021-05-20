@@ -1,5 +1,5 @@
 server:
   port: 9999
 turbine:
-  app-config: service-h1,service-h2
+  app-config: hystrix1,hystrix2
   cluster-name-expression: "'default'"

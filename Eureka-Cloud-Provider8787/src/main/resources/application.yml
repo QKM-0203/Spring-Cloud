@@ -1,0 +1,24 @@
+server:
+  port: 8787
+spring:
+  zipkin:
+    base-url: http://localhost:9411
+  sleuth:
+    sampler:
+      probability: 1
+  application:
+    name: provider-service
+eureka:
+  client:
+    service-url:
+      #      集群版,用逗号分隔
+      defaultZone: http://www.qkm.com:8788/eureka,http://www.QKM.com:8761/eureka #可以配置多个Eureka一般在生产环境中会有多个eureka
+  #  是否将自己注册进eureka
+  #    register-with-eureka: true
+  instance:
+    instance-id: provide8787
+    prefer-ip-address: true
+#    eureka客户端发送最后一次心跳后的等待后的最长时间,超时就删除客户端
+#   lease-expiration-duration-in-seconds: 2(默认值)
+#    客户端向eureka发送心跳时间间隔
+#   lease-renewal-interval-in-seconds: 1(默认值)

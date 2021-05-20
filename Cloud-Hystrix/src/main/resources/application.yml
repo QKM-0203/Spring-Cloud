@@ -5,7 +5,12 @@ server:
   port: 9090
 spring:
   application:
-    name: service-h1
+    name: hystrix1
+eureka:
+  client:
+    service-url:
+      #      集群版,用逗号分隔
+      defaultZone: http://www.qkm.com:8788/eureka,http://www.QKM.com:8761/eureka #可以配置多个Eureka一般在生产环境中会有多个eureka
 management:
   endpoints:
     web:

@@ -5,7 +5,7 @@ server:
   port: 9987
 spring:
   application:
-    name: service-h2
+    name: hystrix2
 management:
   endpoints:
     web:

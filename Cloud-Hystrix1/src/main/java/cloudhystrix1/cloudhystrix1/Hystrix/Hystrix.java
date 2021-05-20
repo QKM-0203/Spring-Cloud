@@ -39,11 +39,8 @@ public class Hystrix {
         return 9/0;
     }
 
-
     public int backHystrix1(){
         int i = 9;
         return 8;
     }
-
-
 }
